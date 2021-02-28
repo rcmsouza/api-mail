@@ -1,0 +1,7 @@
+
+
+class AnswerController {
+
+}
+
+export { AnswerController }

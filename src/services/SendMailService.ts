@@ -3,7 +3,7 @@ import handlebars from 'handlebars';
 import fs from 'fs';
 
 class SendMailService{
-    private client: Transporter
+    private client: Transporter;
     constructor() {
         nodemailer.createTestAccount().then(account => {
             const transporter = nodemailer.createTransport({
@@ -19,8 +19,13 @@ class SendMailService{
         });
     }
 
-    async execute(to: string, subject: string, variables: object, path: string){
-        const templateFileContent = fs.readFileSync(path).toString('utf-8');
+    public async execute(
+        to: string,
+        subject: string,
+        variables: object,
+        path: string
+        ){
+        const templateFileContent = fs.readFileSync(path).toString('utf8');
 
         const mailTemplateParse = handlebars.compile(templateFileContent)
 
